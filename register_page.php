@@ -42,13 +42,16 @@ if(isset($_SESSION['user_id'])) {
         </div>
 
         <div class="col s12 m12 l12 input-field">
-          <input id="text" type="text" name="phoneno"/>
+          <input id="text" type="text" pattern="^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$" name="phoneno"/>
           <label for="phoneno">Phone#</label>
         </div>
 
         <div class="col s12 m12 l12 input-field">
           <input id="password" type="password" name="password"/>
           <label for="password">Password</label>
+        </div>
+        <div class="col s12 m12 l12 input-field">
+          <a href="login_page.php" type="btn orange">Already Have an account?</a>
         </div>
 
         <div class="col s12 m12 l12">

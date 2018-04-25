@@ -1,27 +1,9 @@
 <?php
 session_start();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if(!isset($_SESSION['user_name']))
+{
+  header('location: login_page.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -32,6 +14,7 @@ session_start();
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
   	<script type="text/javascript" src="Materialize/jquery-2.1.0.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   	<script type="text/javascript" src="Materialize/materialize.js"></script>
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -70,6 +53,10 @@ session_start();
                             <label for="Event_Location">Event Address</label>
                             <input type="text" id="Event_Location" required name="address" />
                           </div>
+                          <div class="input-field col s12 m12 l12">
+                            <p>Event Date</p>
+                            <input type="date" min="<?php echo date('Y-m-d'); ?>" class="datepicker" id="Event_Date" required name="organize_date" />
+                          </div>
                           <div class="file-field input-field col s12 m12 l12">
                                 <div class="btn green ">
                                   <span> <i class="fa fa-image"></i> </span>
@@ -101,12 +88,13 @@ session_start();
 
 
 
-
     <?php     include('partials/footer.php'); ?>
 <script type="text/javascript">
+
+$('.datepicker').datepicker().open();
+
   $(document).ready(function(){
     $('textarea').materialize_textarea();
-
   });
 </script>
   </body>

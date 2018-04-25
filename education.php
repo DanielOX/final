@@ -40,7 +40,7 @@ $self_user = mysqli_fetch_assoc($UYT);
     width:100%;
     height:100%;
     background-attachment: fixed;
-    background-image: url('nicole-harrington-516250.jpg');
+    background-image: url('faustin-tuyambaze-135473-unsplash.jpg');
     background-size: cover;
     background-position: center center;
   }

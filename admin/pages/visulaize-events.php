@@ -5,14 +5,14 @@ if(!(isset($_SESSION['user_name']) && isset($_SESSION['isAdmin'])))
   header('location: login.php');
 }
 $conn = mysqli_connect('127.0.0.1','root','','community');
-$query = "SELECT * FROM events WHERE isActive = 0";
+$query = "SELECT * FROM events ORDER BY id DESC";
 $result = mysqli_query($conn,$query);
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Visualize User</title>
+    <title>Visualize Events</title>
     <link rel="stylesheet" href="../../Materialize/materialize.css">
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
@@ -70,10 +70,17 @@ $result = mysqli_query($conn,$query);
                               echo $row['organizer_id'];
                               echo '</td>';
 
-                              echo "<td style='text-align:center'>";
-                              echo "<a type='button' class='btn red btn-floating' href='events/approve.php?id=".$row['id']."'> <i class='fa fa-check green'></i> </a>&nbsp;";
-                              echo "<a type='button' class='btn red btn-floating' href='events/delete.php?id=".$row['id']."'> <i class='fa fa-times'></i> </a>";
+                                if($row['isActive'] == 0)
+                                {
+                                  echo "<td style='text-align:center'>";
+                                  echo "<a type='button' class='btn red btn-floating' href='events/approve.php?id=".$row['id']."'> <i class='fa fa-check green'></i> </a>&nbsp;";
+                                  echo "<a type='button' class='btn red btn-floating' href='events/delete.php?id=".$row['id']."'> <i class='fa fa-times'></i> </a>";
 
+                                }
+                                else {
+                                  echo "<td style='text-align:center'>";
+                                  echo "<a type='button' class='btn red btn-floating' href='events/delete.php?id=".$row['id']."'> <i class='fa fa-trash red'></i> </a>&nbsp;";
+                                }
                               echo "</td>";
                               echo '</tr>';
                           }

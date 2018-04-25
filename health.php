@@ -30,6 +30,12 @@ $self_user = mysqli_fetch_assoc($UYT);
 	body
   {
 		font-family: 'Raleway', sans-serif;
+    width:100%;
+    height:100%;
+    background-attachment: fixed;
+    background-image: url('milo-mcdowell-2198-unsplash.jpg');
+    background-size: cover;
+    background-position: center center;
 	}
 	.carousel:hover
 	{

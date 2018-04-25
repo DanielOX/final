@@ -33,6 +33,10 @@
           <input id="password" type="password" name="password"/>
           <label for="password">Password</label>
         </div>
+        <div class="col s12 m12 l12 input-field">
+          <a href="register_page.php" type="btn orange">Don't Have an account?</a>
+        </div>
+
         <div class="col s12 m12 l12">
           <button type="submit" name="submit" class="btn btn-floating green right"><i class="fa fa-paper-plane-o"></i></button>
         </div>

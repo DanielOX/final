@@ -4,13 +4,14 @@
   $name = $_POST['name'];
   $description = $_POST['description'];
   $address = $_POST['address'];
+  $date = $_POST['organize_date'];
   $conn = mysqli_connect('127.0.0.1','root','','community');
 if($conn)
 {
   $filename = time().substr($_FILES['image']['name'],strpos($_FILES['image']['name'],'.'));
   if(move_uploaded_file($_FILES['image']['tmp_name'],'event_images/'.$filename))
   {
-    $query = "INSERT INTO events (id,name,description,address,isActive,image,organized_on,organizer_id) VALUES (NULL,'$name','$description','$address',0,'$filename',CURRENT_TIMESTAMP,$u_id)";
+    $query = "INSERT INTO events (id,name,description,address,isActive,image,organized_on,organizer_id) VALUES (NULL,'$name','$description','$address',0,'$filename','$date',$u_id)";
     $result = mysqli_query($conn,$query);
     if(!$result)
     {

@@ -35,55 +35,55 @@ else
     <div class="container">
       <div class="row">
         <div class="col s12 m2 l2 offset-m8 offset-l8 right" style="position:fixed;left:20%">
-            <div class="card-content">
-              <div class="card-body">
                 <center>
                   <p class="flow-text">
                       <a type="button" href="create_events.php" class="btn green pulse btn-floating" name="button"> <i class="fa fa-plus"></i> </a>
                   </p>
-
                 </center>
-              </div>
-            </div>
-
       </div>
         </div>
-
+      </div>
+      <div class="container">
         <div class="row">
 <?php
 
 
 while($row = mysqli_fetch_array($result))
 {
-    echo "<div class='card col s12 m3 l3 z-depth-4'>";
-    echo "<div class='card-content'>";
-    echo "<div class='card-body'>";
-    $image_path = $row['image'];
-    $image = 'http://localhost/final/event_images/'.$image_path;
-    echo "<center><div style='
-    width:180px;
-    height:180px;
-    background-size:cover;
-    background-position:center center;
-    border-radius:100%;
-    background-image:url(".$image.");'>";
-    echo '</div></center>';
-    echo "<br>";
-    echo "<div class='divider'></div>";
-    echo "<br>";
-    echo "<p class='flow-text'>";
-    echo $row['name'];
-    echo "</p>";
-    echo "<br>";
-    echo "<div class='divider'></div>";
-    echo "<br>";
-    echo "<p class='flow-text' style='font-size:16px'>";
-    echo substr($row['description'],0,40);
-    echo "</p>";
+   echo "<div class='card col s12 m3 l3 z-depth-3' style='margin-left:5%'>";
+   echo "<div class='card-body'>";
+   $image_path = $row['image'];
+   $image = 'http://localhost/final/event_images/'.$image_path;
+   echo "<center><br><div style='
+   width:150px;
+   height:150px;
+   background-size:cover;
+   background-position:center center;
+   border-radius:100%;
+   background-image:url(".$image.");'>";
+   echo '</div></center>';echo "<br/>";
+   echo "<div class='divider'></div>";
+   echo "<br/>";
+   echo "<p class='flow-text'>";
+   echo $row['name'];
+   echo "</p>";;
+   echo "<p class='flow-text' style='font-size:14px;word-wrap:break-word'>".
+   substr($row['description'],0,40)
 
-    echo "</div>";
-    echo "</div>";
-    echo "</div>";
+   ."...</p>";
+   echo "<p class='right'>~&nbsp;".$row['organized_on']."&nbsp;<i class='fa fa-calendar'></i></p>";
+   $u_id = $row['organizer_id'];
+   $query = "SELECT user_name FROM user WHERE user_id = $u_id ";
+   $result = mysqli_query($conn,$query);
+   $row = mysqli_fetch_assoc($result);
+   echo "<p class='left'>~&nbsp;".$row['user_name']."&nbsp;<i class='fa fa-calendar'></i></p>";
+
+
+
+
+
+   echo "</div>";
+   echo "</div>";
 }
 ?>
 </div>
